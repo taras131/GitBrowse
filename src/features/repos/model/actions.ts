@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { reposAPI } from "../api";
 import { AppDispatch } from "../../../store";
-import { IGitHubRepository } from "../../../models/IRepos";
+import { IGitHubRepository, TInformMessage } from "../../../models/IRepos";
 import { MESSAGE_SEVERITY, setMessage } from "../../message/model/slice";
 import { INFORM_MESSAGE, TSort } from "../../../utils/consts";
 
@@ -27,7 +27,7 @@ export const fetchGitHubRepos = createAsyncThunk<IGitHubRepository[], FetchRepos
       }
       return res;
     } catch (e) {
-      let errorMessage = INFORM_MESSAGE.ERROR;
+      let errorMessage: TInformMessage = INFORM_MESSAGE.ERROR;
       if (e instanceof Error && e.message === "Not Found") {
         errorMessage = INFORM_MESSAGE.USER_NOT_FOUND;
       }
