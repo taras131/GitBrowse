@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReposEmpty Component matches snapshot 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1nuf7y8-MuiPaper-root-MuiCard-root"
+  >
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-g1fzfi-MuiSvgIcon-root"
+      data-testid="WarningIcon"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M1 21h22L12 2zm12-3h-2v-2h2zm0-4h-2v-4h2z"
+      />
+    </svg>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle1 css-1ms7rs1-MuiTypography-root"
+    >
+      У пользователя нет репозиториев.
+    </h6>
+    <p
+      class="MuiTypography-root MuiTypography-body2 css-r40f8v-MuiTypography-root"
+    >
+      Попробуйте изменить фильтр или создать новый репозиторий.
+    </p>
+  </div>
+</div>
+`;

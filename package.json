@@ -1,0 +1,74 @@
+{
+  "name": "git_browse",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "https://api.github.com",
+  "dependencies": {
+    "@emotion/cache": "11.11.0",
+    "@emotion/react": "^11.10.6",
+    "@emotion/server": "11.11.0",
+    "@emotion/styled": "^11.10.6",
+    "@fontsource/roboto": "^5.0.4",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/lab": "^5.0.0-alpha.147",
+    "@mui/material": "^5.14.12",
+    "@mui/x-date-pickers": "^7.24.1",
+    "@phosphor-icons/react": "2.1.6",
+    "@reduxjs/toolkit": "^1.9.3",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.23",
+    "@types/react": "^18.0.31",
+    "@types/react-dom": "^18.0.11",
+    "@types/xlsx": "^0.0.36",
+    "dayjs": "^1.11.13",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.10.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start --open",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "docker:clean": "docker rm -f git_browse_container || true",
+    "docker:build": "docker build -t git_browse .",
+    "docker:run": "docker run -d -p 3000:80 --name git_browse_container git_browse",
+    "docker:open": "start http://localhost:3000",
+    "docker:up": "npm run docker:clean && npm run docker:build && npm run docker:run && timeout /t 3 && npm run docker:open"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
+    "concurrently": "^9.1.2",
+    "jest": "^27.5.1",
+    "json-server": "^1.0.0-beta.3",
+    "prettier": "3.3.2",
+
+    "typescript": "^4.8.2"
+  }
+}
