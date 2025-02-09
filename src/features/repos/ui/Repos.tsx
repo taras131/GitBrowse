@@ -78,8 +78,10 @@ const Repos = () => {
     setSearchQuery(value);
   };
   const handleHistoryItemClick = (value: string) => {
-    setSearchQuery(value);
-    handleRestartSearch(value);
+    if(value !== searchQuery) {
+      setSearchQuery(value);
+      handleRestartSearch(value);
+    }
   };
   const handleSortChange = (e: React.MouseEvent<HTMLElement>, newSort: TSort) => {
     setSortRepos(newSort);
