@@ -6,3 +6,8 @@ export const formatDate = (dateString: string) => {
     day: "numeric",
   });
 };
+
+export const isValidGithubUsername = (username: string): boolean => {
+  const githubUsernameRegex = /^[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}$/;
+  return githubUsernameRegex.test(username);
+};
