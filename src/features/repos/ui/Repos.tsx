@@ -7,9 +7,11 @@ import Preloader from "../../../components/common/Preloader";
 import ReposHeader from "./ReposHeader";
 import ReposSearch from "./ReposSearch";
 import { Stack } from "@mui/material";
-import {resetReposList, setReposInformMessage, setReposLoading } from "../model/slice";
+import { resetReposList, setReposInformMessage, setReposLoading } from "../model/slice";
 import { INFORM_MESSAGE, REPOS, SORT, START_SEARCH_HISTORY, TSort } from "../../../utils/consts";
 import ReposEmpty from "./ReposEmpty";
+import { isValidGithubUsername } from "../../../utils/services";
+import { MESSAGE_SEVERITY, setMessage } from "../../message/model/slice";
 
 const Repos = () => {
   const dispatch = useAppDispatch();
@@ -24,9 +26,16 @@ const Repos = () => {
   const message = useAppSelector(selectReposInformMessage);
   const handleSearch = async (newSort = sortRepos) => {
     if (searchQuery.length > 2) {
+      const trimmedQuery = searchQuery.trim();
+      if (!isValidGithubUsername(trimmedQuery)) {
+        dispatch(setReposInformMessage(INFORM_MESSAGE.INVALID_USERNAME));
+        dispatch(setMessage({ severity: MESSAGE_SEVERITY.error, text: INFORM_MESSAGE.INVALID_USERNAME }));
+        dispatch(setReposLoading(false));
+        return;
+      }
       const result = await dispatch(
         fetchGitHubRepos({
-          query: searchQuery,
+          query: trimmedQuery,
           page: 1,
           perPage: REPOS.ITEMS_PER_PAGE,
           direction: newSort,
@@ -43,8 +52,8 @@ const Repos = () => {
     }
     timeoutRef.current = setTimeout(() => {
       if (searchQuery.length > 2) {
-        setSearchHistory(prev => {
-          const filteredHistory = prev.filter(item => item !== searchQuery);
+        setSearchHistory((prev) => {
+          const filteredHistory = prev.filter((item) => item !== searchQuery);
           return [searchQuery, ...filteredHistory];
         });
         void handleSearch();

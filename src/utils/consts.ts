@@ -16,6 +16,7 @@ export const INFORM_MESSAGE = {
     USER_FOUND: "Пользователь найден",
     USER_NOT_FOUND: "К сожалению , пользователь не найден",
     ERROR: "При загрузке возникла ошибка",
+    INVALID_USERNAME: "Недопустимое имя пользователя",
 } as const;
 
 export const START_SEARCH_HISTORY = ["gaearon", "markerikson", "taras131"];
