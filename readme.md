@@ -33,6 +33,14 @@
 - npm 6+
 - Docker (опционально)
 
+## Деплой
+
+`https://gitbrowse.netlify.app/`
+
+## CI CD
+
+перед мержем в ветку main проверяются тесты и build приложения
+
 ## EsLint
 
 `npx eslint --fix .` - форматирование всех файлов
